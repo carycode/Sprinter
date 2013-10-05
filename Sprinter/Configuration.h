@@ -17,7 +17,8 @@
 // Gen 3 Plus = 21
 // gen 3  Monolithic Electronics = 22
 // Gen3 PLUS for TechZone Gen3 Remix Motherboard = 23
-#define MOTHERBOARD 33
+// #define MOTHERBOARD 33
+#define MOTHERBOARD 62
 
 //// Thermistor settings:
 // 1 is 100k thermistor
@@ -32,7 +33,7 @@
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
-#define _AXIS_STEP_PER_UNIT {80, 80, 3200/1.25,700}
+#define _AXIS_STEP_PER_UNIT {80*50.0/49.6, 80*50.0/49.8, (40.0/25)*3200/1.25,700}
 // Metric Prusa Mendel with Makergear geared stepper extruder:
 //#define _AXIS_STEP_PER_UNIT {80,80,3200/1.25,1380}
 // MakerGear Hybrid Prusa Mendel:
@@ -45,9 +46,9 @@
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
 //If your axes are only moving in one direction, make sure the endstops are connected properly.
 //If your axes move in one direction ONLY when the endstops are triggered, set [XYZ]_ENDSTOP_INVERT to true here:
-const bool X_ENDSTOP_INVERT = false;
-const bool Y_ENDSTOP_INVERT = false;
-const bool Z_ENDSTOP_INVERT = false;
+const bool X_ENDSTOP_INVERT = false; // default: false
+const bool Y_ENDSTOP_INVERT = false; // default: false
+const bool Z_ENDSTOP_INVERT = false; // default: false
 
 // This determines the communication speed of the printer
 #define BAUDRATE 115200
@@ -141,7 +142,7 @@ const bool max_software_endstops = true; //If true, axis won't move to coordinat
 //-----------------------------------------------------------------------
 const int X_MAX_LENGTH = 200;
 const int Y_MAX_LENGTH = 200;
-const int Z_MAX_LENGTH = 100;
+const int Z_MAX_LENGTH = 200;
 
 //-----------------------------------------------------------------------
 //// MOVEMENT SETTINGS
@@ -212,7 +213,8 @@ const int dropsegments=5; //everything with less than this number of steps will 
 //-----------------------------------------------------------------------
 // This may be useful if you have multiple machines and wish to identify them by using the M115 command. 
 // By default we set it to zeros.
-#define _DEF_CHAR_UUID "00000000-0000-0000-0000-000000000000"
+// default: #define _DEF_CHAR_UUID "00000000-0000-0000-0000-000000000000"
+#define _DEF_CHAR_UUID "Prusa i3 built by David Cary"
 
 
 
@@ -237,7 +239,7 @@ const int dropsegments=5; //everything with less than this number of steps will 
 // Arc interpretation settings:
 //Step to split a cirrcle in small Lines 
 #define MM_PER_ARC_SEGMENT 1
-//After this count of steps a new SIN / COS caluclation is startet to correct the circle interpolation
+//After this count of steps a new SIN / COS caluclation is started to correct the circle interpolation
 #define N_ARC_CORRECTION 25
 
 //-----------------------------------------------------------------------
